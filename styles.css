@@ -1,70 +1,83 @@
+/* Font Faces */
 @font-face {
-  font-family: "DIN Medium Regular";
-  src: URL("font/DIN Medium Regular.ttf") format("truetype");
+  font-family: "DINLight";
+  src: url("fonts/DIN Light Regular.woff2") format("woff2"),
+    url("fonts/DIN Light Regular.woff") format("woff"),
+    url("fonts/DIN Light Regular.ttf") format("truetype");
 }
 
+/* Base Styles */
 body {
-  font-family: "DIN Medium Regular", "Roboto", sans-serif;
-  background-image: url("img/background_img.png");
-  color: #000000;
+  font-family: "DINLight", "Ropa Sans", "Courier Prime", sans-serif;
+  background-color: #000000;
   margin: 0;
-  padding: 0;
+  padding: 20px; /* Unified padding */
   color: white;
-  padding: 20px;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 header {
   text-align: left;
 }
 
-header h1 {
-  margin: 0;
-  color: #09f;
+header p {
+  margin-top: 0 !important; /* Ensures no top margin for paragraphs inside header */
 }
 
+.logo {
+  padding: 10px;
+  max-height: 15vh;
+}
+
+/* Navigation Styles */
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 0; /* Ensure there's no default margin */
+  margin: 0; /* Removes default margin */
+  width: 100% !important;
+  font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial;
 }
 
 nav li {
-  margin-bottom: 10px; /* Adds some space between list items */
+  margin-bottom: 10px; /* Adds space between list items */
 }
 
 nav a {
   text-decoration: none;
   color: white;
-  position: relative; /* Essential for positioning the pseudo-element */
-  display: inline; /* Change to inline or inline-block */
-  padding: 0; /* Adjust padding as needed */
+  position: relative; /* Required for pseudo-element positioning */
+  display: inline; /* Adjusted to 'inline' for better flow */
+  padding: 0; /* Reset padding */
 }
 
 nav a::after {
   content: "";
   position: absolute;
-  width: 0; /* Start with no underline visible */
-  height: 2px; /* Thickness of the underline */
-  bottom: -5px; /* Adjust vertical position as needed */
+  width: 0; /* Initially hidden underline */
+  height: 2px;
+  bottom: -5px;
   left: 0;
-  background-color: white; /* Color of the underline */
-  transition: width 0.4s ease-out; /* Adjust for a smoother transition */
+  background-color: white;
+  transition: width 0.4s ease-out;
   transform: translateX(-50%);
-  visibility: hidden; /* Hide by default */
+  visibility: hidden; /* Hidden by default */
 }
 
 nav a:hover::after {
-  width: 100%; /* Extend to full width of the text */
+  width: 100%; /* Full width on hover */
   transform: translateX(0%);
-  visibility: visible; /* Ensure it's visible on hover */
+  visibility: visible; /* Makes underline visible on hover */
 }
 
+/* Footer Styles */
 footer {
   text-align: center;
-  padding: 10px;
+  /* padding: 10px; */
   font-size: 0.8em;
 }
 
+/* Layout Styles */
 .container {
   display: flex;
   flex-direction: column;
@@ -73,7 +86,7 @@ footer {
 .column {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the start (left) of the container */
+  align-items: flex-start; /* Align items to the start */
   justify-content: center;
   height: 70vh;
   text-align: left;
@@ -82,44 +95,42 @@ footer {
 
 .column p,
 .column ul {
-  width: 90%;
+  width: 100%;
 }
 
-.column ul {
+.column nav ul {
   list-style-type: none;
-  width: 100%;
   font-size: 1.5em;
   line-height: 1.25em;
   font-weight: 50;
 }
 
 .column p {
-  list-style-type: none;
   font-size: 2.25em;
 }
-/* Media query for screens wider than 600px */
+
+/* Responsive Design Adjustments */
 @media (min-width: 600px) {
+  body {
+    background-image: url("img/background_img.png"); /* Background image for wider screens */
+  }
   .container {
-    flex-direction: row; /* Change to row to make columns side by side */
+    flex-direction: row; /* Columns side by side */
   }
-
   .column {
-    width: 50%; /* Adjust the width so each column takes up half the container */
-    height: 100vh;
-  }
-
-  .collapse {
-    height: 1px !important;
+    width: 50%; /* Adjust column width */
+    height: 90vh;
   }
 }
 
 .collapse {
-  padding-top: 10px;
-  height: 50px !important;
+  padding-top: 15px;
+  height: 50px !important; /* Adjusted height */
 }
+
 .bottom {
   position: absolute;
-  bottom: 0; /* set the bottom to 0*/
+  bottom: 0;
   align-self: center !important;
   width: 100%;
 }
