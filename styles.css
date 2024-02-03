@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "DIN Medium Regular";
+  src: URL("font/DIN Medium Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: "DIN Medium Regular", "Roboto", sans-serif;
+  background-image: url("img/background_img.png");
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  color: white;
+  padding: 20px;
+}
+
+header {
+  text-align: left;
+}
+
+header h1 {
+  margin: 0;
+  color: #09f;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Ensure there's no default margin */
+}
+
+nav li {
+  margin-bottom: 10px; /* Adds some space between list items */
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  position: relative; /* Essential for positioning the pseudo-element */
+  display: inline; /* Change to inline or inline-block */
+  padding: 0; /* Adjust padding as needed */
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0; /* Start with no underline visible */
+  height: 2px; /* Thickness of the underline */
+  bottom: -5px; /* Adjust vertical position as needed */
+  left: 0;
+  background-color: white; /* Color of the underline */
+  transition: width 0.4s ease-out; /* Adjust for a smoother transition */
+  transform: translateX(-50%);
+  visibility: hidden; /* Hide by default */
+}
+
+nav a:hover::after {
+  width: 100%; /* Extend to full width of the text */
+  transform: translateX(0%);
+  visibility: visible; /* Ensure it's visible on hover */
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.8em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) of the container */
+  justify-content: center;
+  height: 70vh;
+  text-align: left;
+  width: 100%;
+}
+
+.column p,
+.column ul {
+  width: 90%;
+}
+
+.column ul {
+  list-style-type: none;
+  width: 100%;
+  font-size: 2em;
+  line-height: 1em;
+  font-weight: 50;
+}
+
+.column p {
+  list-style-type: none;
+  font-size: 2.25em;
+}
+/* Media query for screens wider than 600px */
+@media (min-width: 600px) {
+  .container {
+    flex-direction: row; /* Change to row to make columns side by side */
+  }
+
+  .column {
+    width: 50%; /* Adjust the width so each column takes up half the container */
+    height: 100vh;
+  }
+
+  .collapse {
+    height: 1px !important;
+  }
+}
+
+.collapse {
+  padding-top: 10px;
+  height: 50px !important;
+}
+.bottom {
+  position: absolute;
+  bottom: 0; /* set the bottom to 0*/
+  align-self: center !important;
+  width: 100%;
+}
